@@ -1,5 +1,4 @@
-from fastapi import FastAPI
-from fastapi import Depends
+from fastapi import FastAPI, Response, Depends
 from contextlib import asynccontextmanager
 from controllers.dna_controller import router as dna_router
 from app.database import database
@@ -19,3 +18,7 @@ app.include_router(dna_router)
 @app.get("/")
 async def root():
     return {"message": "Welcome to Magneto's Mutant Detector!"}
+
+@app.head("/")
+async def root_head():
+    return Response()
